@@ -2,9 +2,9 @@ import { Instagram, Facebook, Twitter, Youtube } from "lucide-react";
 
 export function SiteFooter() {
   const socials = [
-    { Icon: Instagram, href: "https://instagram.com/jihedbougrine", label: "Instagram" },
+    { Icon: Instagram, href: "https://www.instagram.com/jihed_visuals/", label: "Instagram" },
     { Icon: Facebook, href: "https://facebook.com/jihedbougrine", label: "Facebook" },
-    { Icon: Twitter, href: "https://github.com/jihedbougrine", label: "GitHub" },
+    { Icon: Twitter, href: "https://github.com/jihedbougrine2-creator", label: "GitHub" },
     { Icon: Youtube, href: "https://linkedin.com/in/jihedbougrine", label: "LinkedIn" },
   ];
   return (

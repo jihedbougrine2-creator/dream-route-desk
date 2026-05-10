@@ -34,9 +34,9 @@ function ContactPage() {
             <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Follow our journeys</p>
             <div className="flex gap-3">
               {[
-              { Icon: Instagram, href: "https://instagram.com/jihedbougrine", label: "Instagram" },
+              { Icon: Instagram, href: "https://www.instagram.com/jihed_visuals/", label: "Instagram" },
                 { Icon: Facebook, href: "https://facebook.com/jihedbougrine", label: "Facebook" },
-                { Icon: Twitter, href: "https://github.com/jihedbougrine", label: "GitHub" },
+                { Icon: Twitter, href: "https://github.com/jihedbougrine2-creator", label: "GitHub" },
                 { Icon: Youtube, href: "https://linkedin.com/in/jihedbougrine", label: "LinkedIn" },
               ].map(({ Icon, href, label }) => (
                 <a
