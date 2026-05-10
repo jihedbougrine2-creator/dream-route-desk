@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Compass, Leaf, ShieldCheck, Sparkles, Search, Quote, Star } from "lucide-react";
+import { ArrowRight, Compass, Leaf, ShieldCheck, Sparkles, Search, Quote, Star, Code2, Github } from "lucide-react";
 import { useMemo, useState } from "react";
 import hero from "@/assets/hero-coast.jpg";
 import santorini from "@/assets/dest-santorini.jpg";
