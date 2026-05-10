@@ -13,9 +13,10 @@ export function SiteHeader() {
           </span>
           <span className="font-display text-xl tracking-tight">Marée</span>
         </Link>
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-7">
           <Link to="/" activeOptions={{ exact: true }} className={linkClass} activeProps={{ className: "text-foreground" }}>Home</Link>
           <Link to="/destinations" className={linkClass} activeProps={{ className: "text-foreground" }}>Destinations</Link>
+          <Link to="/testimonials" className={linkClass} activeProps={{ className: "text-foreground" }}>Testimonials</Link>
           <Link to="/about" className={linkClass} activeProps={{ className: "text-foreground" }}>About</Link>
           <Link to="/contact" className={linkClass} activeProps={{ className: "text-foreground" }}>Contact</Link>
         </nav>
