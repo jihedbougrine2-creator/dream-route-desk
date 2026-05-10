@@ -2,10 +2,10 @@ import { Instagram, Facebook, Twitter, Youtube } from "lucide-react";
 
 export function SiteFooter() {
   const socials = [
-    { Icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-    { Icon: Facebook, href: "https://facebook.com", label: "Facebook" },
-    { Icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-    { Icon: Youtube, href: "https://youtube.com", label: "YouTube" },
+    { Icon: Instagram, href: "https://instagram.com/jihedbougrine", label: "Instagram" },
+    { Icon: Facebook, href: "https://facebook.com/jihedbougrine", label: "Facebook" },
+    { Icon: Twitter, href: "https://github.com/jihedbougrine", label: "GitHub" },
+    { Icon: Youtube, href: "https://linkedin.com/in/jihedbougrine", label: "LinkedIn" },
   ];
   return (
     <footer className="border-t border-border/60 bg-secondary/40">
@@ -18,13 +18,13 @@ export function SiteFooter() {
         </div>
         <div>
           <h5 className="font-medium mb-3">Contact</h5>
-          <p className="text-muted-foreground">hello@maree.travel</p>
-          <p className="text-muted-foreground">+1 (555) 014-2280</p>
+          <p className="text-muted-foreground">Jihed Bougrine</p>
+          <p className="text-muted-foreground">Jihedbougrine2@gmail.com</p>
+          <p className="text-muted-foreground">+216 20 242 442</p>
         </div>
         <div>
-          <h5 className="font-medium mb-3">Studio</h5>
-          <p className="text-muted-foreground">12 Harbour Lane</p>
-          <p className="text-muted-foreground">Lisbon, Portugal</p>
+          <h5 className="font-medium mb-3">Based in</h5>
+          <p className="text-muted-foreground">Tunis, Tunisia</p>
         </div>
         <div>
           <h5 className="font-medium mb-3">Follow</h5>
