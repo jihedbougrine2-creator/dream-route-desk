@@ -26,18 +26,18 @@ function ContactPage() {
             A few sentences are plenty — dates, destinations, the feeling you're after. We'll write back with a thoughtful first sketch.
           </p>
           <div className="mt-10 space-y-4 text-sm">
-            <div className="flex items-center gap-3"><Mail className="h-4 w-4 text-primary" /> hello@maree.travel</div>
-            <div className="flex items-center gap-3"><Phone className="h-4 w-4 text-primary" /> +1 (555) 014-2280</div>
-            <div className="flex items-center gap-3"><MapPin className="h-4 w-4 text-primary" /> 12 Harbour Lane, Lisbon</div>
+            <div className="flex items-center gap-3"><Mail className="h-4 w-4 text-primary" /> Jihedbougrine2@gmail.com</div>
+            <div className="flex items-center gap-3"><Phone className="h-4 w-4 text-primary" /> +216 20 242 442</div>
+            <div className="flex items-center gap-3"><MapPin className="h-4 w-4 text-primary" /> Tunis, Tunisia</div>
           </div>
           <div className="mt-10">
             <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Follow our journeys</p>
             <div className="flex gap-3">
               {[
-                { Icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-                { Icon: Facebook, href: "https://facebook.com", label: "Facebook" },
-                { Icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-                { Icon: Youtube, href: "https://youtube.com", label: "YouTube" },
+              { Icon: Instagram, href: "https://instagram.com/jihedbougrine", label: "Instagram" },
+                { Icon: Facebook, href: "https://facebook.com/jihedbougrine", label: "Facebook" },
+                { Icon: Twitter, href: "https://github.com/jihedbougrine", label: "GitHub" },
+                { Icon: Youtube, href: "https://linkedin.com/in/jihedbougrine", label: "LinkedIn" },
               ].map(({ Icon, href, label }) => (
                 <a
                   key={label}

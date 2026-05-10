@@ -16,13 +16,13 @@ function AboutPage() {
   return (
     <div>
       <section className="mx-auto max-w-4xl px-6 pt-24 pb-16">
-        <p className="text-xs uppercase tracking-widest text-primary">Our studio</p>
-        <h1 className="mt-3 text-5xl md:text-6xl text-balance">A quieter way to plan a trip.</h1>
+        <p className="text-xs uppercase tracking-widest text-primary">About me</p>
+        <h1 className="mt-3 text-5xl md:text-6xl text-balance">Hi, I'm Jihed Bougrine.</h1>
         <p className="mt-8 text-lg text-muted-foreground leading-relaxed">
-          Marée began on a small balcony in Lisbon, looking out at the Atlantic. We were tired of itineraries that felt like checklists — and convinced that the best journeys are the ones you barely have to manage.
+          I'm a student in Informatics (Bac Info) based in Tunis, Tunisia, with a deep passion for web development, algorithmic problem solving, and building modern, thoughtful web applications.
         </p>
         <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-          Today we are a team of seven designers, planners and former hoteliers. We work with around 80 boutique partners across the Mediterranean, the Indian Ocean and South-East Asia — most of whom we've stayed with personally.
+          Marée is where my curiosity for design and code meets a love for travel — a small project crafted to help travellers discover quieter, more considered coastal journeys.
         </p>
       </section>
 
