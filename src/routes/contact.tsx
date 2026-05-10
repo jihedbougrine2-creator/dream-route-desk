@@ -66,7 +66,7 @@ function ContactPage() {
             </div>
           ) : (
             <div className="grid gap-5">
-              <Field label="Your name"><input required className="input" placeholder="Lena Hart" /></Field>
+              <Field label="Your name"><input required className="input" placeholder="Jihed Bougrine" /></Field>
               <Field label="Email"><input required type="email" className="input" placeholder="lena@example.com" /></Field>
               <Field label="Where to?"><input className="input" placeholder="Greek islands, Maldives…" /></Field>
               <Field label="Tell us more">
