@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Send, Instagram, Facebook, Twitter, Youtube } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -29,6 +29,28 @@ function ContactPage() {
             <div className="flex items-center gap-3"><Mail className="h-4 w-4 text-primary" /> hello@maree.travel</div>
             <div className="flex items-center gap-3"><Phone className="h-4 w-4 text-primary" /> +1 (555) 014-2280</div>
             <div className="flex items-center gap-3"><MapPin className="h-4 w-4 text-primary" /> 12 Harbour Lane, Lisbon</div>
+          </div>
+          <div className="mt-10">
+            <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Follow our journeys</p>
+            <div className="flex gap-3">
+              {[
+                { Icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+                { Icon: Facebook, href: "https://facebook.com", label: "Facebook" },
+                { Icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+                { Icon: Youtube, href: "https://youtube.com", label: "YouTube" },
+              ].map(({ Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-card border border-border/60 text-foreground/70 hover:text-primary hover:border-primary transition-smooth"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 
