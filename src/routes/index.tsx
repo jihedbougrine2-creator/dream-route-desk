@@ -222,6 +222,33 @@ function Index() {
         </div>
       </section>
 
+      {/* My Tech Projects */}
+      <section className="mx-auto max-w-7xl px-6 py-24">
+        <div className="rounded-3xl border border-border/60 bg-card p-10 md:p-14 shadow-card grid gap-8 md:grid-cols-[1.4fr_1fr] items-center">
+          <div>
+            <p className="text-xs uppercase tracking-widest text-primary inline-flex items-center gap-2">
+              <Code2 className="h-3.5 w-3.5" /> Beyond travel
+            </p>
+            <h2 className="mt-3 text-4xl md:text-5xl">My Tech Projects</h2>
+            <p className="mt-5 text-muted-foreground max-w-xl leading-relaxed">
+              When I'm not designing coastal journeys, I build web applications and explore algorithmic problem solving.
+              Browse my open-source work, experiments and ongoing projects on GitHub.
+            </p>
+            <a
+              href="https://github.com/jihedbougrine2-creator"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3 text-sm font-medium hover:translate-y-[-1px] transition-smooth"
+            >
+              <Github className="h-4 w-4" /> View my GitHub
+            </a>
+          </div>
+          <div className="relative aspect-square rounded-2xl bg-gradient-ocean shadow-glow flex items-center justify-center text-primary-foreground">
+            <Github className="h-24 w-24 opacity-90" />
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="mx-auto max-w-7xl px-6 py-24">
         <div className="rounded-3xl bg-gradient-ocean text-primary-foreground px-8 md:px-16 py-16 md:py-20 shadow-glow flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
