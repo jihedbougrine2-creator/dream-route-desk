@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Compass, Leaf, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, Compass, Leaf, ShieldCheck, Sparkles, Search, Quote, Star } from "lucide-react";
+import { useMemo, useState } from "react";
 import hero from "@/assets/hero-coast.jpg";
 import santorini from "@/assets/dest-santorini.jpg";
 import bali from "@/assets/dest-bali.jpg";
@@ -16,14 +17,41 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const featured = [
-  { name: "Santorini", country: "Greece", img: santorini, price: "from $2,480", days: "7 days" },
-  { name: "Amalfi Coast", country: "Italy", img: amalfi, price: "from $3,120", days: "9 days" },
-  { name: "Bali", country: "Indonesia", img: bali, price: "from $1,980", days: "10 days" },
-  { name: "Maldives", country: "Indian Ocean", img: maldives, price: "from $4,250", days: "6 days" },
+type Category = "All" | "Island" | "Romantic" | "Family" | "Adventure";
+type PriceBand = "all" | "under2500" | "2500to3500" | "over3500";
+
+const featured: { name: string; country: string; img: string; price: number; days: number; category: Exclude<Category, "All"> }[] = [
+  { name: "Santorini", country: "Greece", img: santorini, price: 2480, days: 7, category: "Romantic" },
+  { name: "Amalfi Coast", country: "Italy", img: amalfi, price: 3120, days: 9, category: "Romantic" },
+  { name: "Bali", country: "Indonesia", img: bali, price: 1980, days: 10, category: "Adventure" },
+  { name: "Maldives", country: "Indian Ocean", img: maldives, price: 4250, days: 6, category: "Island" },
+];
+
+const categories: Category[] = ["All", "Island", "Romantic", "Family", "Adventure"];
+
+const homeReviews = [
+  { name: "Helena & Mateo", trip: "Maldives, 2025", quote: "A private dhoni at sunrise, a tiny island lunch, no rush, ever." },
+  { name: "Priya Sharma", trip: "Amalfi Coast, 2024", quote: "Every hotel felt hand-picked for us. The lemon-grove lunch is unforgettable." },
+  { name: "Tom & Iris", trip: "Santorini, 2024", quote: "We said 'quiet, with a view of the caldera' — they delivered exactly that." },
 ];
 
 function Index() {
+  const [query, setQuery] = useState("");
+  const [category, setCategory] = useState<Category>("All");
+  const [price, setPrice] = useState<PriceBand>("all");
+
+  const filtered = useMemo(() => {
+    return featured.filter((d) => {
+      if (category !== "All" && d.category !== category) return false;
+      if (price === "under2500" && d.price >= 2500) return false;
+      if (price === "2500to3500" && (d.price < 2500 || d.price > 3500)) return false;
+      if (price === "over3500" && d.price <= 3500) return false;
+      const q = query.trim().toLowerCase();
+      if (q && !`${d.name} ${d.country}`.toLowerCase().includes(q)) return false;
+      return true;
+    });
+  }, [query, category, price]);
+
   return (
     <div>
       {/* Hero */}
@@ -65,8 +93,42 @@ function Index() {
         </div>
       </section>
 
+      {/* Search & filters */}
+      <section className="mx-auto max-w-5xl px-6 -mt-16 md:-mt-20 relative z-10">
+        <div className="rounded-3xl bg-card shadow-glow border border-border/60 p-5 md:p-6 grid gap-4 md:grid-cols-[1.6fr_1fr_1fr]">
+          <label className="relative">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search destinations…"
+              className="w-full rounded-xl bg-background border border-border pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/15 transition-smooth"
+            />
+          </label>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value as Category)}
+            className="rounded-xl bg-background border border-border px-4 py-3 text-sm focus:outline-none focus:border-primary"
+          >
+            {categories.map((c) => (
+              <option key={c} value={c}>{c === "All" ? "All categories" : c}</option>
+            ))}
+          </select>
+          <select
+            value={price}
+            onChange={(e) => setPrice(e.target.value as PriceBand)}
+            className="rounded-xl bg-background border border-border px-4 py-3 text-sm focus:outline-none focus:border-primary"
+          >
+            <option value="all">Any price</option>
+            <option value="under2500">Under $2,500</option>
+            <option value="2500to3500">$2,500 – $3,500</option>
+            <option value="over3500">Over $3,500</option>
+          </select>
+        </div>
+      </section>
+
       {/* Trust band */}
-      <section className="bg-secondary/50 border-y border-border/60">
+      <section className="bg-secondary/50 border-y border-border/60 mt-20">
         <div className="mx-auto max-w-7xl px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
           {[
             { icon: Compass, t: "Hand-built itineraries", d: "Designed around your pace" },
@@ -96,39 +158,67 @@ function Index() {
             View all <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {featured.map((d) => (
-            <article key={d.name} className="group rounded-3xl overflow-hidden bg-card shadow-card hover:shadow-glow transition-smooth">
-              <div className="aspect-[4/5] overflow-hidden">
-                <img
-                  src={d.img}
-                  alt={`${d.name}, ${d.country}`}
-                  loading="lazy"
-                  width={1024}
-                  height={1280}
-                  className="h-full w-full object-cover group-hover:scale-105 transition-smooth"
-                />
-              </div>
-              <div className="p-5">
-                <div className="flex items-baseline justify-between">
-                  <h3 className="text-xl">{d.name}</h3>
-                  <span className="text-xs text-muted-foreground">{d.days}</span>
+        {filtered.length === 0 ? (
+          <div className="rounded-3xl border border-dashed border-border p-16 text-center text-muted-foreground">
+            No destinations match those filters yet — try widening your search.
+          </div>
+        ) : (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {filtered.map((d) => (
+              <article key={d.name} className="group rounded-3xl overflow-hidden bg-card shadow-card hover:shadow-glow transition-smooth">
+                <div className="aspect-[4/5] overflow-hidden">
+                  <img
+                    src={d.img}
+                    alt={`${d.name}, ${d.country}`}
+                    loading="lazy"
+                    width={1024}
+                    height={1280}
+                    className="h-full w-full object-cover group-hover:scale-105 transition-smooth"
+                  />
                 </div>
-                <p className="text-sm text-muted-foreground">{d.country}</p>
-                <p className="mt-3 text-sm font-medium text-primary">{d.price}</p>
-              </div>
-            </article>
-          ))}
-        </div>
+                <div className="p-5">
+                  <div className="flex items-baseline justify-between">
+                    <h3 className="text-xl">{d.name}</h3>
+                    <span className="text-xs text-muted-foreground">{d.days} days</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">{d.country} · {d.category}</p>
+                  <p className="mt-3 text-sm font-medium text-primary">from ${d.price.toLocaleString()}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
       </section>
 
-      {/* Quote */}
+      {/* Testimonials */}
       <section className="bg-gradient-sky border-y border-border/60">
-        <div className="mx-auto max-w-4xl px-6 py-24 text-center">
-          <p className="font-display text-3xl md:text-4xl leading-snug text-balance">
-            "Marée planned the kind of trip you only dream about — a private dhoni at sunrise, a tiny island lunch, no rush, ever."
-          </p>
-          <p className="mt-6 text-sm text-muted-foreground">Helena & Mateo, Maldives 2025</p>
+        <div className="mx-auto max-w-7xl px-6 py-24">
+          <div className="flex items-end justify-between gap-6 mb-12">
+            <div>
+              <p className="text-xs uppercase tracking-widest text-primary">Loved by guests</p>
+              <h2 className="mt-2 text-4xl md:text-5xl">Stories from the shore</h2>
+            </div>
+            <Link to="/testimonials" className="hidden md:inline-flex items-center gap-1 text-sm font-medium hover:text-primary transition-smooth">
+              All reviews <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {homeReviews.map((r) => (
+              <article key={r.name} className="rounded-3xl bg-card p-7 shadow-card border border-border/60 flex flex-col">
+                <Quote className="h-7 w-7 text-primary/70" />
+                <p className="mt-4 text-foreground/90 leading-relaxed flex-1">"{r.quote}"</p>
+                <div className="mt-5 flex items-center gap-1">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                  ))}
+                </div>
+                <div className="mt-3">
+                  <p className="text-sm font-medium">{r.name}</p>
+                  <p className="text-xs text-muted-foreground">{r.trip}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
